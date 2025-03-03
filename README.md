@@ -56,13 +56,20 @@ La API incorpora **Spring Actuator con Micrometer**, permitiendo la recopilació
 ## Endpoints Disponibles
 
 ### Productos
-| Método  | Endpoint              | Descripción                              |
-|---------|----------------------|------------------------------------------|
-| GET     | `/api/products`      | Obtiene todos los productos (paginado). |
-| GET     | `/api/products/{id}` | Obtiene un producto por ID.             |
-| POST    | `/api/products`      | Crea un nuevo producto.                 |
-| PUT     | `/api/products/{id}` | Actualiza un producto existente.        |
-| DELETE  | `/api/products/{id}` | Elimina un producto.                    |
+| Método  | Endpoint                            | Descripción                                             |
+|---------|-------------------------------------|---------------------------------------------------------|
+| GET     | `/api/products`                     | Obtiene todos los productos (paginado).                 |
+| GET     | `/api/products/{id}`                | Obtiene un producto por ID.                             |
+| GET     | `/api/products/category/{category}` | Obtiene una lista de productos por categoria (paginado) |
+| POST    | `/api/products`                     | Crea un nuevo producto.                                 |
+| PUT     | `/api/products/{id}`                | Actualiza un producto existente.                        |
+| DELETE  | `/api/products/{id}`                | Elimina un producto.                                    |
+
+## Consideraciones sobre los endpoint de productos
+
+los endpoint paginados tienen dos parametros adicionales que son:
+- page que indica el numero de pagina a consultar (cuyo valor por defecto es 0) haciendo que el llamado completo se vea asi: /api/products/{id}?page={page}&size={size}
+- size que indica el tamaño de la pagina a responder (cuyo valor por defecto es 10) haciendo que el llamado completo se vea asi: /api/products/category/{category}?page={page}&size={size}
 
 ### Métricas
 | Método  | Endpoint      | Descripción                        |
@@ -72,6 +79,8 @@ La API incorpora **Spring Actuator con Micrometer**, permitiendo la recopilació
 ## Consideraciones sobre la Base de Datos
 
 Debido a limitaciones de recursos en el entorno de desarrollo, se ha optado por utilizar **H2 en memoria** como base de datos. Esta configuración permite realizar pruebas sin requerir una instalación adicional de bases de datos externas.
+
+El proyecto cuenta con un archivo data.sql que realiza una precarga de datos para poder ver los endopint funcionando de mejor manera.
 
 ## Licencia
 Este proyecto está distribuido bajo la licencia **MIT**.

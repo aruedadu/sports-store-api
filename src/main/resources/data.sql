@@ -1,4 +1,3 @@
--- Insertar Categorias
 INSERT INTO category (category_name) VALUES
 ('Balones'),
 ('Ropa Deportiva'),
@@ -9,7 +8,6 @@ INSERT INTO category (category_name) VALUES
 ('Ciclismo'),
 ('Deportes Acuaticos');
 
--- Insertar Productos
 INSERT INTO product (product_name, price, stock, brand) VALUES
 ('Balon de Futbol Adidas', 29.99, 100, 'Adidas'),
 ('Zapatillas de Running Nike', 79.99, 50, 'Nike'),
@@ -69,7 +67,6 @@ INSERT INTO product (product_name, price, stock, brand) VALUES
 ('Bolsa de Deportes Adidas', 29.99, 120, 'Adidas'),
 ('Faja de Soporte para Correr', 15.99, 140, 'Pro Fitness');
 
--- Insertar Relaciones de Producto y Categoria (10 productos con al menos 2 categorias asignadas)
 INSERT INTO product_category (product_id, category_id) VALUES
 (1, 1), (1, 5),
 (2, 3), (2, 4),
