@@ -5,8 +5,6 @@ import com.meli.challenge.products.model.entity.Product;
 import com.meli.challenge.products.repository.ProductRepository;
 import com.meli.challenge.products.service.ProductMetricsService;
 import io.micrometer.core.instrument.MeterRegistry;
-import jakarta.annotation.PostConstruct;
-import jakarta.annotation.PreDestroy;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

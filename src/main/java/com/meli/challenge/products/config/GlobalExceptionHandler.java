@@ -12,7 +12,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(ResourceNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public String handleResourceNotFoundException(ResourceNotFoundException ex) {
-        return ex.getMessage(); // Custom message returned in the response body
+        return ex.getMessage();
     }
 }
 

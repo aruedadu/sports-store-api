@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/metrics")
 @RequiredArgsConstructor
-@Tag(name = "Métricas", description = "Métricas generales de los productos")
+@Tag(name = "Metricas", description = "Métricas generales de los productos")
 public class MetricsController {
 
     private final ProductMetricsService productMetricsService;
 
-    @Operation(summary = "Obtener métricas de productos",
-            description = "Retorna estadísticas generales sobre los productos.")
+    @Operation(summary = "Obtener metricas de productos",
+            description = "Retorna estadisticas generales sobre los productos.")
     @GetMapping
     public ResponseEntity<DTOProductMetrics> getProductMetrics() {
 

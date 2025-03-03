@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/products")
 @RequiredArgsConstructor
-@Tag(name = "Productos", description = "Gestión de productos deportivos")
+@Tag(name = "Productos", description = "Gestion de productos deportivos")
 public class ProductController {
 
     private final ProductService productService;
@@ -32,25 +32,25 @@ public class ProductController {
     @PostMapping
     @Operation(
             summary = "Crear un nuevo producto",
-            description = "Permite registrar un nuevo producto en la tienda y asociarlo con una o más categorías."
+            description = "Permite registrar un nuevo producto en la tienda y asociarlo con una o mas categorias."
     )
     @ApiResponse(responseCode = "201", description = "Producto creado exitosamente")
-    @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos")
+    @ApiResponse(responseCode = "400", description = "Datos de entrada invalidos")
     @ApiResponse(responseCode = "500", description = "Error interno del servidor")
     public ResponseEntity<DTOProduct> createProduct(@Valid @RequestBody DTOCreateProduct dto) {
         return ResponseEntity.ok(productService.createProduct(dto));
     }
 
     @GetMapping("/category/{category}")
-    @Operation(summary = "Obtener productos por categoría con paginación")
-    @ApiResponse(responseCode = "200", description = "Lista de productos filtrada por categoría")
-    @ApiResponse(responseCode = "400", description = "Parámetros inválidos en la solicitud")
-    @ApiResponse(responseCode = "404", description = "Categoría no encontrada")
+    @Operation(summary = "Obtener productos por categoria con paginacion")
+    @ApiResponse(responseCode = "200", description = "Lista de productos filtrada por categoria")
+    @ApiResponse(responseCode = "400", description = "Parametros invalidos en la solicitud")
+    @ApiResponse(responseCode = "404", description = "Categoria no encontrada")
     @ApiResponse(responseCode = "500", description = "Error interno del servidor")
     public Page<DTOProduct> getProductsByCategory(
             @PathVariable String category,
-            @RequestParam(defaultValue = "0") @Parameter(description = "Número de página") int page,
-            @RequestParam(defaultValue = "10") @Parameter(description = "Tamaño de la página") int size) {
+            @RequestParam(defaultValue = "0") @Parameter(description = "Numero de pagina") int page,
+            @RequestParam(defaultValue = "10") @Parameter(description = "Tamaño de la pagina") int size) {
         return productService.getProductsByCategory(category, page, size);
     }
 
@@ -64,18 +64,18 @@ public class ProductController {
     }
 
     @GetMapping
-    @Operation(summary = "Obtener todos los productos con paginación")
+    @Operation(summary = "Obtener todos los productos con paginacion")
     @ApiResponse(responseCode = "200", description = "Lista de productos obtenida correctamente")
     @ApiResponse(responseCode = "500", description = "Error interno del servidor")
     public Page<DTOProduct> getAllProducts(
-            @RequestParam(defaultValue = "0") @Parameter(description = "Número de página") int page,
-            @RequestParam(defaultValue = "10") @Parameter(description = "Tamaño de la página") int size) {
+            @RequestParam(defaultValue = "0") @Parameter(description = "Numero de pagina") int page,
+            @RequestParam(defaultValue = "10") @Parameter(description = "Tamaño de la pagina") int size) {
         return productService.getAllProducts(page, size);
     }
 
     @Operation(summary = "Actualizar un producto")
     @ApiResponse(responseCode = "200", description = "Producto actualizado correctamente")
-    @ApiResponse(responseCode = "400", description = "Datos de entrada inválidos")
+    @ApiResponse(responseCode = "400", description = "Datos de entrada invalidos")
     @ApiResponse(responseCode = "404", description = "Producto no encontrado")
     @ApiResponse(responseCode = "500", description = "Error interno del servidor")
     @PutMapping

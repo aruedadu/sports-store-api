@@ -1,7 +1,6 @@
 package com.meli.challenge.products.unit.service.service;
 
 import com.meli.challenge.products.model.dto.DTOProductMetrics;
-import com.meli.challenge.products.model.entity.Product;
 import com.meli.challenge.products.repository.ProductRepository;
 import com.meli.challenge.products.service.impl.ProductMetricsServiceImpl;
 import io.micrometer.core.instrument.MeterRegistry;
@@ -10,15 +9,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
@@ -70,8 +66,6 @@ class ProductMetricsServiceTest {
 
     @Test
     void testGetProductMetrics() {
-        // Arrange
-        //AtomicInteger existingAtomicInteger = new AtomicInteger(0);
         when(meterRegistry.gauge(eq("product.category.views"), any(AtomicInteger.class)))
                 .thenAnswer(invocation -> {
                     Object[] args = invocation.getArguments();
@@ -87,7 +81,6 @@ class ProductMetricsServiceTest {
 
         DTOProductMetrics metrics = productMetricsService.getProductMetrics();
 
-        // Assert
         List<String> topCategories = metrics.topCategories();
         assertEquals(3, topCategories.size());
         assertEquals(0, topCategories.indexOf("Accesorios"));
