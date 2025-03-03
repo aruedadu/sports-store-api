@@ -12,11 +12,6 @@ CREATE TABLE IF NOT EXISTS category (
 );
 
 CREATE TABLE IF NOT EXISTS product_category (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    category_name VARCHAR(50)
-);
-
-CREATE TABLE IF NOT EXISTS product_category (
     product_id INT,
     category_id INT,
     PRIMARY KEY (product_id, category_id),
