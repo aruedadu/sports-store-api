@@ -76,6 +76,24 @@ class ProductControllerTest {
     }
 
     @Test
+    void testGetProductByCategory_Success() throws Exception {
+
+        mockMvc.perform(get("/api/products/category/Balones?page=0&size=5")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.totalElements").value("9"))
+                .andExpect(jsonPath("$.size").value("5"));
+    }
+
+    @Test
+    void testGetProductByCategory_NoCategoryFound() throws Exception {
+
+        mockMvc.perform(get("/api/products/category/no-existo?page=0&size=5")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
     void testCreateProduct_Success() throws Exception {
 
         mockMvc.perform(post("/api/products")
